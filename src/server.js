@@ -1,8 +1,11 @@
 import http from 'node:http';
 import { routers } from './routers/routers.js';
 
-function serverHandler(request, response) {
+async function serverHandler(request, response) {
   const {method, url} = request;
+
+  // middleware
+  await json(request, response);
 
   const route = routers.find((route) => {
     return route.method === method && route.path === url;
