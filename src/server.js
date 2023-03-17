@@ -1,4 +1,6 @@
 import http from 'node:http';
+
+import { json } from './middlewares/json.js';
 import { routers } from './routers/routers.js';
 
 async function serverHandler(request, response) {

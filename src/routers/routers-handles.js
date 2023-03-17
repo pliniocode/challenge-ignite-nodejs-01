@@ -26,5 +26,5 @@ export function tasksPOST(request, response) {
 
   database.insert(tasks);
   response.writeHead(201);
-  response.end('Task created successfully ');
+  response.end(JSON.stringify('Task created successfully'));
 }

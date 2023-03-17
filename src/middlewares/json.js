@@ -1,9 +1,9 @@
 import { Buffer } from 'node:buffer'
 
-export function json(request, response) {
+export async function json(request, response) {
   const buffers = [];
 
-  for (const chunk of request) {
+  for await (const chunk of request) {
     buffers.push(chunk);
   }
 
