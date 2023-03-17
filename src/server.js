@@ -12,9 +12,6 @@ function serverHandler(request, response) {
     return route.handler(request, response);
   }
 
-    // response.writeHead(200);
-    // response.write('Server is up');
-    // return response.end();
   return response.writeHead(404).end('Not found (: ');
 }
 
