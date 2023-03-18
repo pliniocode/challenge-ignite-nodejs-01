@@ -10,10 +10,16 @@ async function serverHandler(request, response) {
   await json(request, response);
 
   const route = routers.find((route) => {
-    return route.method === method && route.path === url;
+    return route.method === method && route.path.test(url);
   });
 
   if (route) {
+    const routeParams = request.url.match(route.path);
+
+    if (routeParams.groups) {
+      request.params= { id: routeParams.groups.id };
+    }
+
     return route.handler(request, response);
   }
 

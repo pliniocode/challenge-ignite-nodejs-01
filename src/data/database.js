@@ -49,7 +49,8 @@ export class Database {
     const rowIndex = this.#database.findIndex((row) => row.id === id);
 
     if (rowIndex > -1) {
-      this.#database[rowIndex] = { id, ...data };
+      const rowUpdated = { id, ...this.#database[rowIndex] , ...data};
+      this.#database[rowIndex] = rowUpdated;
       this.#persist();
     }
   }

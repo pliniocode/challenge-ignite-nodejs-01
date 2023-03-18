@@ -20,11 +20,24 @@ export function tasksPOST(request, response) {
     title: title,
     description: description,
     completed_at : null,
-    created_at: new Date().toLocaleDateString(),
+    created_at: `${new Date().toLocaleDateString()}: ${new Date().toLocaleTimeString()}`,
     updated_at: null, 
   }
 
   database.insert(tasks);
   response.writeHead(201);
   response.end(JSON.stringify('Task created successfully'));
+}
+
+export function tasksPUT(request, response) {
+  const { id } = request.params;
+  const { title, description } = request.body;
+
+  database.update(id, { 
+    title, 
+    description, 
+    updated_at: `${new Date().toLocaleDateString()}: ${new Date().toLocaleTimeString()}`
+  });
+
+  return response.writeHead(204).end();
 }

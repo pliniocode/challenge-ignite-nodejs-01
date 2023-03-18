@@ -1,15 +1,21 @@
-import { tasksGET, tasksPOST } from "./routers-handles.js";
+import { buildRoutePath } from "../utils/build-route-path.js";
+import { tasksGET, tasksPOST, tasksPUT } from "./routers-handles.js";
 
 export const routers = [
   {
     method: 'GET', 
-    path: '/tasks',
+    path: buildRoutePath('/tasks'),
     handler: tasksGET, 
   },
   {
     method: 'POST', 
-    path: '/tasks',
+    path: buildRoutePath('/tasks'),
     handler: tasksPOST, 
+  }, 
+  {
+    method: 'PUT',
+    path: buildRoutePath('/tasks/:id'),
+    handler: tasksPUT,
   }
 
 ]; 
