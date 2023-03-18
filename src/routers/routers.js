@@ -1,5 +1,5 @@
 import { buildRoutePath } from "../utils/build-route-path.js";
-import { tasksDelete, tasksGET, tasksPOST, tasksPUT } from "./routers-handles.js";
+import { tasksDelete, tasksGET, tasksPatch, tasksPOST, tasksPUT } from "./routers-handles.js";
 
 export const routers = [
   {
@@ -21,5 +21,10 @@ export const routers = [
     method: 'DELETE',
     path: buildRoutePath('/tasks/:id'),
     handler: tasksDelete,
+  }, 
+  {
+    method: 'PATCH',
+    path: buildRoutePath('/tasks/:id/complete'),
+    handler: tasksPatch,
   }
 ]; 

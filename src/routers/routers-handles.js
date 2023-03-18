@@ -48,6 +48,18 @@ export function tasksDelete(request, response) {
   return response.writeHead(204).end();
 }
 
+export function tasksPatch(request, response) {
+  const { id } = request.params;
+
+  const dateTimeNow = `${new Date().toLocaleDateString()}: ${new Date().toLocaleTimeString()}`;
+  database.update(id, {
+    completed_at: dateTimeNow,
+    updated_at: dateTimeNow
+  });
+
+  return response.writeHead(204).end();
+}
+
 
 
 
