@@ -5,7 +5,6 @@ import { Database } from "../data/database.js";
 const database = new Database();
 
 export function tasksGET(request, response) {
-  // const 
 
   const tasks = database.select();
   const tasksInJson = JSON.stringify(tasks);
@@ -41,3 +40,20 @@ export function tasksPUT(request, response) {
 
   return response.writeHead(204).end();
 }
+
+export function tasksDelete(request, response) {
+  const { id } = request.params;
+
+  database.delete(id);
+  return response.writeHead(204).end();
+}
+
+
+
+
+/**
+ * Seria interessante implementar tratamento de erros para cada chamada do database.
+ * Outra, é deixar cada função dentro de um arquivo especifico, dento de um diretório
+ * Ex: ./routers-handlers/*.js
+ * 
+ */

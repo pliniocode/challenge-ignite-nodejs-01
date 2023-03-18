@@ -55,4 +55,13 @@ export class Database {
     }
   }
 
+  delete(id) {
+    const rowIndex =this.#database.findIndex((row) => row.id === id);
+
+    if (rowIndex > -1) {
+      delete this.#database.splice(rowIndex, 1);
+      this.#persist();
+    }
+  }
+
 }
